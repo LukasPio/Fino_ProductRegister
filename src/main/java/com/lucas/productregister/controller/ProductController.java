@@ -1,8 +1,6 @@
 package com.lucas.productregister.controller;
 
 import com.lucas.productregister.DTO.ProductResponseDTO;
-import com.lucas.productregister.domain.Product;
-import com.lucas.productregister.repository.ProductRepository;
 import com.lucas.productregister.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
