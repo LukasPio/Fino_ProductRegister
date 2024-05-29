@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    password: secret
+    username: admin
+    url: jdbc:postgresql://localhost:5432/product
