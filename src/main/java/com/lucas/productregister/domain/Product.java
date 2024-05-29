@@ -11,7 +11,6 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "products")
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
@@ -22,6 +21,8 @@ public class Product {
     private String description;
     private Float price;
     private Integer quantity;
+    @Column(name = "created_at")
     private Timestamp createdAt;
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 }
