@@ -35,4 +35,9 @@ public class ProductController {
     public ResponseEntity<String> update(@RequestBody ProductRequestDTO productData, @NotNull @PathVariable String oldName) {
         return productService.update(productData, oldName);
     }
+
+    @DeleteMapping(path = "/{productName}")
+    public ResponseEntity<String> delete(@PathVariable String productName) {
+        return productService.delete(productName);
+    }
 }
