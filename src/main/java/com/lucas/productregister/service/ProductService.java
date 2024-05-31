@@ -4,6 +4,7 @@ import com.lucas.productregister.DTO.ProductRequestDTO;
 import com.lucas.productregister.DTO.ProductResponseDTO;
 import com.lucas.productregister.domain.Product;
 import com.lucas.productregister.repository.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,5 +45,14 @@ public class ProductService {
         product.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         productRepository.save(product);
         return ResponseEntity.status(HttpStatus.OK).body("Product was updated successfully");
+    }
+
+    @Transactional
+    public ResponseEntity<String> delete(String productName) {
+        Optional<Product> product = productRepository.findByName(productName);
+        if (product.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product with name: "+productName+" does not exist");
+        productRepository.delete(product.get());
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Product was deleted successfully");
     }
 }
