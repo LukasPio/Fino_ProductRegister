@@ -1,10 +1,10 @@
 package com.lucas.productregister.domain;
 
+import com.lucas.productregister.DTO.ProductRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Timestamp;
 
@@ -25,4 +25,13 @@ public class Product {
     private Timestamp createdAt;
     @Column(name = "updated_at")
     private Timestamp updatedAt;
+
+    public Product (ProductRequestDTO productData) {
+        this.name = productData.name();
+        this.description = productData.description();
+        this.price = productData.price();
+        this.quantity = productData.quantity();
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
+    }
 }
