@@ -30,4 +30,9 @@ public class ProductController {
     public ResponseEntity<String> save(@RequestBody ProductRequestDTO productData) {
         return productService.save(productData);
     }
+
+    @PutMapping(path = "/{oldName}")
+    public ResponseEntity<String> update(@RequestBody ProductRequestDTO productData, @NotNull @PathVariable String oldName) {
+        return productService.update(productData, oldName);
+    }
 }
