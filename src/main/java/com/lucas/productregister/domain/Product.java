@@ -1,5 +1,6 @@
 package com.lucas.productregister.domain;
 
+import com.lucas.productregister.DTO.ProductRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "products")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
@@ -25,4 +27,13 @@ public class Product {
     private Timestamp createdAt;
     @Column(name = "updated_at")
     private Timestamp updatedAt;
+
+    public Product (ProductRequestDTO productData) {
+        this.name = productData.name();
+        this.description = productData.description();
+        this.price = productData.price();
+        this.quantity = productData.quantity();
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
+    }
 }
